@@ -2,7 +2,6 @@ from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["bcrypt"])
 
-# in-memory user store (pre-seeded)
 users_db = {
     "admin": {
         "username": "admin",
@@ -21,5 +20,4 @@ users_db = {
     },
 }
 
-# in-memory bookings store: list of dicts
 bookings_db = []
