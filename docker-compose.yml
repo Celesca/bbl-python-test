@@ -1,8 +1,19 @@
 services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3031:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3032
+    command: npm run dev -- -p 3000
+
   backend:
     build: ./backend
     ports:
-      - "8000:8000"
+      - "3032:3032"
     volumes:
       - ./backend:/app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn app.main:app --host 0.0.0.0 --port 3032 --reload

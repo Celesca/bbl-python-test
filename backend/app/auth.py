@@ -6,13 +6,12 @@ from fastapi.security import OAuth2PasswordBearer
 
 from app.database import users_db
 
-# https://fastapi.tiangolo.com/tutorial/security/get-current-user/
+# https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/
 
 SECRET_KEY = "super-secret-key"
 ALGORITHM = "HS256"
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
-
 
 def create_token(username: str, is_admin: bool) -> str:
     payload = {
@@ -22,6 +21,9 @@ def create_token(username: str, is_admin: bool) -> str:
     }
     return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 
+
+# This is the main function to authenticate user from token
+# if token is valid will 401 Unauthorized
 
 def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:
     try:

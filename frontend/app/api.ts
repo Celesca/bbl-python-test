@@ -3,7 +3,7 @@ import axios from "axios";
 // Use axios for API calls easily
 
 const api = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3032",
 });
 
 export async function login(username: string, password: string) {
