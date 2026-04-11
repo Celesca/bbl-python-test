@@ -4,7 +4,7 @@ import jwt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
-from database import users_db
+from app.database import users_db
 
 SECRET_KEY = "super-secret-key"
 ALGORITHM = "HS256"
