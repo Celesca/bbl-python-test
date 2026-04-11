@@ -34,3 +34,5 @@ and checking the loginc on the booking and login page
 on 2:25 - check the validation and the testing
 
 on 2:32 - want to refactoring code on the
+
+on 2:40 - dockerfile

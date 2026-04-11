@@ -2,6 +2,8 @@
 
 Sawit Koseeyaumporn 
 
+<img src="https://www.share2trade.com/storage/Web%20Board/2025/180425/Untitled-1.jpg"/>
+
 
 ## Installation Guide
 
@@ -22,6 +24,16 @@ source .venv/bin/activate
 ```
 
 Then install the dependencies with `pip install -r requirements.txt`
+
+Then start server with `python server.py`
+
+For the frontend :
+
+```
+cd frontend
+npm install
+npm run dev
+```
 
 
 
