@@ -1,6 +1,6 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 
-from app.auth import create_token
+from app.auth import create_token, get_current_user
 from app.database import verify_password, users_db
 from app.model import LoginRequest
 
@@ -15,3 +15,8 @@ def login(body: LoginRequest):
 
     token = create_token(user.username, user.is_admin)
     return {"access_token": token, "is_admin": user.is_admin}
+
+
+@router.get("/user/me")
+def get_me(user: dict = Depends(get_current_user)):
+    return user

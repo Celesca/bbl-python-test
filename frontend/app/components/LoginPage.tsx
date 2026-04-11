@@ -1,38 +1,48 @@
-// https://github.com/vercel/nextjs-postgres-auth-starter/blob/main/app/page.tsx
+"use client";
 
-import Link from 'next/link';
-import { Form } from 'app/form';
-import { SubmitButton } from 'app/submit-button';
+import { useState } from "react";
+import { login } from "../api";
 
-export default function Login() {
+interface Props {
+  onLogin: (token: string, isAdmin: boolean) => void;
+}
+
+export default function LoginPage({ onLogin }: Props) {
+  
+  // State for form inputs
+  
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    try {
+      const data = await login(username, password);
+      onLogin(data.access_token, data.is_admin);
+    } catch {
+      setError("Invalid username or password");
+    }
+  };
+
+  // I use the AI for styling the login page,
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
-      <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
-        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center sm:px-16">
-          <h3 className="text-xl font-semibold">Sign In</h3>
-          <p className="text-sm text-gray-500">
-            Use your email and password to sign in
-          </p>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+      <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-semibold mb-2">Username: </label>
+          <input className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value={username} onChange={(e) => setUsername(e.target.value)} />
         </div>
-        <Form
-          action={async (formData: FormData) => {
-            'use server';
-            await signIn('credentials', {
-              redirectTo: '/protected',
-              email: formData.get('email') as string,
-              password: formData.get('password') as string,
-            });
-          }}
-        >
-          <SubmitButton>Sign in</SubmitButton>
-          <p className="text-center text-sm text-gray-600">
-            {"Don't have an account? "}
-            <Link href="/register" className="font-semibold text-gray-800">
-              Sign up
-            </Link>
-            {' for free.'}
-          </p>
-        </Form>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-semibold mb-2">Password: </label>
+          <input type="password" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </div>
+          <button type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition">Login</button>
+      </form>
+      {error && <p className="mt-4 text-red-500 text-center font-semibold">{error}</p>}
       </div>
     </div>
   );

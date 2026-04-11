@@ -95,6 +95,4 @@ o Test the login functionality with different user credentials.
 
 o Test the booking functionality for both admin and non-admin users.
 
-o Ensure that admin users can view all bookings, while non-admin users can only manage
-
-their own bookings.
+o Ensure that admin users can view all bookings, while non-admin users can only manage their own bookings.
