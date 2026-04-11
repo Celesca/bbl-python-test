@@ -6,6 +6,11 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from app.database import users_db
 
+# https://fastapi.tiangolo.com/tutorial/security/get-current-user/
+
+# ใช้คอนเซ้ปต์ Depends เพื่อดึงข้อมูลผู้ใช้จาก token ใน header ของ request
+# https://fastapi.tiangolo.com/how-to/authentication-error-status-code/?h=httpauthorizationcredentials
+
 SECRET_KEY = "super-secret-key"
 ALGORITHM = "HS256"
 
