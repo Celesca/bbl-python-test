@@ -6,7 +6,7 @@ from app.model import BookingModel, BookingRequest
 
 router = APIRouter()
 
-
+# Create bookings
 @router.post("/bookings")
 def create_booking(body: BookingRequest, user: dict = Depends(get_current_user)):
     booking = BookingModel(
@@ -17,7 +17,7 @@ def create_booking(body: BookingRequest, user: dict = Depends(get_current_user))
     bookings_db.append(booking)
     return booking
 
-
+# get list for all (if admin)
 @router.get("/bookings")
 def get_bookings(user: dict = Depends(get_current_user)):
     if user["is_admin"]:

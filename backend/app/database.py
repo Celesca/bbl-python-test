@@ -18,3 +18,6 @@ users_db: dict[str, UserModel] = {
 }
 
 bookings_db: list[BookingModel] = []
+bookings_db.append(BookingModel(id=1, username="admin", time_slot="09:00-10:00"))
+bookings_db.append(BookingModel(id=2, username="user1", time_slot="10:00-11:00"))
+bookings_db.append(BookingModel(id=3, username="user2", time_slot="11:00-12:00"))
