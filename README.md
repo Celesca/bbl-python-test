@@ -1,4 +1,41 @@
-Python Developer Assessment (1-1.30 hrs)
+# Python Developer Assessment (1-1.30 hrs) - BBL
+
+Sawit Koseeyaumporn 
+
+<img src="https://www.share2trade.com/storage/Web%20Board/2025/180425/Untitled-1.jpg"/>
+
+
+## Installation Guide
+
+for the backend we need to create .venv first by using
+
+```
+cd backend
+python -m venv .venv
+
+On CMD
+.venv\Scripts\activate
+
+On Windows PowerShell
+.venv\Scripts\Activate.ps1
+
+On macOS/Linux
+source .venv/bin/activate
+```
+
+Then install the dependencies with `pip install -r requirements.txt`
+
+Then start server with `python server.py`
+
+For the frontend :
+
+```
+cd frontend
+npm install
+npm run dev
+```
+
+
 
 Objective:
 
@@ -8,17 +45,13 @@ appointment bookings. The application should have a frontend for login and booki
 
 authentication, authorization, and booking management.
 
- 
-
 Requirements:
 
 1. Frontend (Optional):
 
 o Create a login page where users can enter their username and password.
 
-o Create a appointment booking page where users can book a time slot (as a string/text
-
-for simplicity e.g. 10am-11am).
+o Create a appointment booking page where users can book a time slot (as a string/text for simplicity e.g. 10am-11am).
 
 o Use any frontend framework or library (e.g., HTML/CSS, JavaScript, React, etc.).
 
@@ -74,6 +107,5 @@ o Test the login functionality with different user credentials.
 
 o Test the booking functionality for both admin and non-admin users.
 
-o Ensure that admin users can view all bookings, while non-admin users can only manage
+o Ensure that admin users can view all bookings, while non-admin users can only manage their own bookings.
 
-their own bookings.
