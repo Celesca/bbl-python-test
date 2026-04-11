@@ -26,8 +26,12 @@ export default function BookingPage({ token, isAdmin }: Props) {
   };
 
   useEffect(() => {
-    loadBookings();
-  }, []);
+    const fetchBookings = async () => {
+      const data = await getBookings(token);
+      setBookings(data);
+    };
+    fetchBookings();
+  }, [token]);
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
